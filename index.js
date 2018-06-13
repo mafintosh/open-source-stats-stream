@@ -115,12 +115,13 @@ function createStream (isRelevant) {
         if (data.id[0] === '_' || data.deleted) return cb(null)
         stats.npm.totalModules++
 
-        const created = new Date(data.doc.time.created).getTime()
-        const modified = new Date(data.doc.time.modified).getTime()
-
         if (!isMaintaining(data)) return cb(null)
 
         stats.npm.maintaining++
+
+        const time = (data.doc && data.doc.time) || {}
+        const created = new Date(time.created || 0).getTime()
+        const modified = new Date(time.modified || 0).getTime()
 
         if (created > lastMonth) {
           stats.npm.lastMonth.created++
