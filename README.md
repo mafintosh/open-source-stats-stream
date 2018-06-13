@@ -1,0 +1,37 @@
+# open-source-stats-stream
+
+A stream that tails npm and node core commits to produce an open
+source stat digest of a group on contributors
+
+```
+npm install open-source-stats-stream
+```
+
+## Usage
+
+``` js
+const createStream = require('open-source-stats-stream')
+
+// pass in an array of names that identify the contributors
+createStream(['mafintosh', 'Mathias Buus'])
+  .on('data', console.log) // emitted everytime the stats are updated
+```
+
+Will produce a stream of thats that look like this
+
+```js
+TODO
+```
+
+## Command line tool
+
+There is also an command line tool available
+
+```sh
+npm install -g open-source-stats-stream
+open-source-stats-stream mafintosh 'Mathias Buus'
+```
+
+## License
+
+MIT

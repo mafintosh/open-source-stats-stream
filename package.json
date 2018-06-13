@@ -1,0 +1,33 @@
+{
+  "name": "open-source-stats-stream",
+  "version": "0.0.0",
+  "description": "WIP - nothing to see here",
+  "main": "index.js",
+  "dependencies": {
+    "JSONStream": "^1.3.3",
+    "node-core-commit-stream": "^1.0.0",
+    "npm-package-download-counts": "^1.0.2",
+    "pump": "^3.0.0",
+    "simple-get": "^3.0.2",
+    "stream-each": "^1.2.2"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
+  },
+  "bin": {
+    "open-source-stats-stream": "./bin.js"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mafintosh/open-source-stats-stream.git"
+  },
+  "author": "Mathias Buus (@mafintosh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafintosh/open-source-stats-stream/issues"
+  },
+  "homepage": "https://github.com/mafintosh/open-source-stats-stream"
+}
