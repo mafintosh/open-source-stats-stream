@@ -20,7 +20,12 @@ createStream(['mafintosh', 'Mathias Buus'])
 Will produce a stream of thats that look like this
 
 ```js
-TODO
+{ npm: 
+   { totalModules: 646719,
+     maintaining: 687,
+     lastMonth: { downloads: 293745180, updated: 62, created: 4 } },
+  nodeCore: 
+   { lastMonth: { totalCommits: 415, authored: 3, reviewed: 0, committed: 1 } } }
 ```
 
 ## Command line tool
