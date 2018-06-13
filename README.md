@@ -17,7 +17,7 @@ createStream(['mafintosh', 'Mathias Buus'])
   .on('data', console.log) // emitted everytime the stats are updated
 ```
 
-Will produce a stream of thats that look like this
+Will produce a stream of stats that looks like this:
 
 ```js
 { npm: 
