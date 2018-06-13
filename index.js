@@ -2,11 +2,26 @@ const commitStream = require('node-core-commit-stream')
 const pump = require('pump')
 const each = require('stream-each')
 const get = require('simple-get')
-const JSONStream = require('JSONStream')
+const split = require('split2')
 const counts = require('npm-package-download-counts')
-const { Readable, PassThrough } = require('stream')
+const { Readable, Transform } = require('stream')
 
 module.exports = createStream
+
+function parseJSON () {
+  return new Transform({objectMode: true, transform})
+
+  function transform (data, enc, cb) {
+    data = data.toString().trim()
+    if (data[data.length - 1] === ',') data = data.slice(0, -1)
+    try {
+      data = JSON.parse(data)
+    } catch (err) {
+      return cb()
+    }
+    cb(null, data)
+  }
+}
 
 function createStream (isRelevant) {
   if (Array.isArray(isRelevant)) {
@@ -107,7 +122,7 @@ function createStream (isRelevant) {
       if (stopped) return
       if (err) return cb(err)
 
-      each(pump(res, JSONStream.parse('results.*'), new PassThrough({objectMode: true})), ondata, cb)
+      each(pump(res, split(), parseJSON()), ondata, cb)
 
       function ondata (data, cb) {
         if (stopped) return res.destroy()
