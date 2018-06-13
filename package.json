@@ -1,6 +1,6 @@
 {
   "name": "open-source-stats-stream",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "WIP - nothing to see here",
   "main": "index.js",
   "dependencies": {
