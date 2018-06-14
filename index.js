@@ -48,7 +48,7 @@ function createStream (isRelevant) {
         totalCommits: 0,
         authored: 0,
         reviewed: 0,
-        committed: 0
+        landed: 0
       }
     }
   }
@@ -92,16 +92,14 @@ function createStream (isRelevant) {
       if (isRelevant(data.author.name)) {
         stats.nodeCore.lastMonth.authored++
         updated = true
-      }
-      if (isRelevant(data.committer.name)) {
-        stats.nodeCore.lastMonth.committed++
-        updated = true
-      }
-      if (data.reviewedBy.map(r => r.name).some(isRelevant)) {
+      } else if (data.reviewedBy.map(r => r.name).some(isRelevant)) {
         stats.nodeCore.lastMonth.reviewed++
         updated = true
       }
-
+      if (isRelevant(data.committer.name)) {
+        stats.nodeCore.lastMonth.landed++
+        updated = true
+      }
       stats.nodeCore.lastMonth.totalCommits++
       if (updated) stream.push(stats)
     })
